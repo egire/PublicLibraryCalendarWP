@@ -3,7 +3,7 @@
  * Plugin Name:       Public Library Calendar
  * Plugin URI:        https://gistifi.com/public-library-calendar
  * Description:        Events calendar for public libraries with public event registration, capacity limits, and an automatic waitlist.
- * Version:           1.2.2
+ * Version:           1.3.0
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            Eric Gire
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'PLC_VERSION', '1.2.2' );
+define( 'PLC_VERSION', '1.3.0' );
 define( 'PLC_DB_VERSION', '1.0' );
 define( 'PLC_PLUGIN_FILE', __FILE__ );
 define( 'PLC_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );

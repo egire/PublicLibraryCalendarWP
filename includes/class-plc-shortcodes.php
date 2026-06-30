@@ -62,10 +62,11 @@ class PLC_Shortcodes {
 		);
 
 		if ( 'yes' !== $atts['past'] ) {
+			// Floor at the start of today so events earlier today still appear.
 			$args['meta_query'] = array(
 				array(
 					'key'     => '_plc_start',
-					'value'   => current_time( 'mysql' ),
+					'value'   => wp_date( 'Y-m-d' ) . ' 00:00:00',
 					'compare' => '>=',
 					'type'    => 'DATETIME',
 				),
@@ -98,19 +99,34 @@ class PLC_Shortcodes {
 		if ( ! $query->have_posts() ) {
 			echo '<p class="plc-empty">' . esc_html__( 'No upcoming events are scheduled right now. Please check back soon.', 'plc' ) . '</p>';
 		} else {
-			$current_month = '';
+			$today           = wp_date( 'Y-m-d' );
+			$current_section = '';
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				$event_id = get_the_ID();
 				$start    = get_post_meta( $event_id, '_plc_start', true );
-				$month    = $start ? wp_date( 'F Y', PLC_Meta_Boxes::to_timestamp( $start ) ) : __( 'Date to be announced', 'plc' );
+				$ts       = PLC_Meta_Boxes::to_timestamp( $start );
 
-				if ( $month !== $current_month ) {
-					if ( '' !== $current_month ) {
+				if ( $ts && wp_date( 'Y-m-d', $ts ) === $today ) {
+					$section       = '__today__';
+					$heading       = __( 'Today', 'plc' );
+					$section_class = 'plc-month plc-section-today';
+				} elseif ( $ts ) {
+					$section       = wp_date( 'F Y', $ts );
+					$heading       = $section;
+					$section_class = 'plc-month';
+				} else {
+					$section       = '__tba__';
+					$heading       = __( 'Date to be announced', 'plc' );
+					$section_class = 'plc-month';
+				}
+
+				if ( $section !== $current_section ) {
+					if ( '' !== $current_section ) {
 						echo '</div>';
 					}
-					echo '<h3 class="plc-month">' . esc_html( $month ) . '</h3><div class="plc-month-events">';
-					$current_month = $month;
+					echo '<h3 class="' . esc_attr( $section_class ) . '">' . esc_html( $heading ) . '</h3><div class="plc-month-events">';
+					$current_section = $section;
 				}
 
 				echo self::render_list_item( $event_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

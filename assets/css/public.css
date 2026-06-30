@@ -3,9 +3,9 @@
    CSS (e.g. on :root or .plc-calendar) to restyle the calendar and forms.
    The plugin also injects --plc-accent from the Settings → Appearance color. */
 :root {
-	--plc-accent: #1d4ed8;
-	--plc-accent-dark: #1e40af;
-	--plc-accent-soft: #dbeafe;
+	--plc-accent: #334155;
+	--plc-accent-dark: #1e293b;
+	--plc-accent-soft: #f1f5f9;
 	--plc-border: #e5e7eb;
 	--plc-muted: #6b7280;
 	--plc-radius: 10px;
@@ -20,6 +20,10 @@
 	margin: 1.5rem 0 0.75rem;
 	padding-bottom: 0.35rem;
 	border-bottom: 2px solid var(--plc-border);
+}
+.plc-section-today {
+	color: var(--plc-accent-dark);
+	border-bottom-color: var(--plc-accent);
 }
 .plc-month-events {
 	display: grid;

@@ -53,7 +53,7 @@ class PLC_Settings {
 			'calendar_page_id'         => 0,
 			// Appearance / theming.
 			'load_styles'              => 1,
-			'accent_color'            => '#1d4ed8',
+			'accent_color'            => '#334155',
 			// Uninstall behaviour.
 			'delete_data_on_uninstall' => 0,
 		);
@@ -154,7 +154,7 @@ class PLC_Settings {
 
 		$out['load_styles']  = empty( $input['load_styles'] ) ? 0 : 1;
 		$accent              = sanitize_hex_color( $input['accent_color'] ?? '' );
-		$out['accent_color'] = $accent ? $accent : '#1d4ed8';
+		$out['accent_color'] = $accent ? $accent : '#334155';
 
 		$out['delete_data_on_uninstall'] = empty( $input['delete_data_on_uninstall'] ) ? 0 : 1;
 

@@ -7,7 +7,7 @@ Tags: events, calendar, registration, library, rsvp, waitlist
 Requires at least: 5.8
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.2.2
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,10 @@ If the event has a waitlist enabled, additional sign-ups join the waitlist and a
 In a dedicated database table (`{prefix}_plc_registrations`). Deleting the plugin removes this table and all events.
 
 == Changelog ==
+
+= 1.3.0 =
+* New: the list view now groups events under a "Today" heading followed by upcoming months, and includes events happening earlier today.
+* Change: default accent color is now a neutral slate instead of blue (still adjustable under Settings → Appearance).
 
 = 1.2.2 =
 * New: the month grid now previews early next-month events in the grayed-out trailing days, so visitors can see what's coming without changing months.
