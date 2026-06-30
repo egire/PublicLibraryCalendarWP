@@ -1,0 +1,435 @@
+/* Public Library Calendar — front-end styles
+   Theme override points: change these custom properties anywhere in your theme
+   CSS (e.g. on :root or .plc-calendar) to restyle the calendar and forms.
+   The plugin also injects --plc-accent from the Settings → Appearance color. */
+:root {
+	--plc-accent: #1d4ed8;
+	--plc-accent-dark: #1e40af;
+	--plc-accent-soft: #dbeafe;
+	--plc-border: #e5e7eb;
+	--plc-muted: #6b7280;
+	--plc-radius: 10px;
+}
+
+/* ---------- Calendar list ---------- */
+.plc-calendar {
+	margin: 1.5rem 0;
+}
+.plc-month {
+	font-size: 1.15rem;
+	margin: 1.5rem 0 0.75rem;
+	padding-bottom: 0.35rem;
+	border-bottom: 2px solid var(--plc-border);
+}
+.plc-month-events {
+	display: grid;
+	gap: 0.85rem;
+}
+.plc-event-card {
+	display: flex;
+	gap: 1rem;
+	padding: 1rem;
+	border: 1px solid var(--plc-border);
+	border-radius: var(--plc-radius);
+	background: #fff;
+	transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.plc-event-card:hover {
+	box-shadow: 0 6px 20px rgba( 0, 0, 0, 0.08 );
+	transform: translateY( -1px );
+}
+.plc-date-chip {
+	flex: 0 0 auto;
+	width: 58px;
+	height: 58px;
+	border-radius: var(--plc-radius);
+	background: var(--plc-accent);
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	line-height: 1.1;
+}
+.plc-date-chip .plc-dow {
+	font-size: 0.7rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	opacity: 0.85;
+}
+.plc-date-chip .plc-day {
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+.plc-event-body {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.plc-event-title {
+	margin: 0 0 0.25rem;
+	font-size: 1.1rem;
+}
+.plc-event-title a {
+	text-decoration: none;
+	color: inherit;
+}
+.plc-event-title a:hover {
+	color: var(--plc-accent);
+}
+.plc-event-meta {
+	margin: 0.25rem 0;
+	color: var(--plc-muted);
+	font-size: 0.9rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.85rem;
+}
+.plc-event-cats {
+	margin: 0.25rem 0;
+	font-size: 0.8rem;
+}
+.plc-event-cats a {
+	text-decoration: none;
+}
+.plc-event-excerpt {
+	margin: 0.45rem 0;
+	color: #374151;
+	font-size: 0.92rem;
+}
+.plc-event-actions {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin: 0.6rem 0 0;
+	flex-wrap: wrap;
+}
+.plc-empty {
+	padding: 1.5rem;
+	background: #f9fafb;
+	border-radius: var(--plc-radius);
+	color: var(--plc-muted);
+	text-align: center;
+}
+
+/* ---------- Badges ---------- */
+.plc-badge {
+	display: inline-block;
+	padding: 0.15rem 0.55rem;
+	border-radius: 999px;
+	font-size: 0.75rem;
+	font-weight: 600;
+}
+.plc-badge-open {
+	background: #dcfce7;
+	color: #166534;
+}
+.plc-badge-wait {
+	background: #fef9c3;
+	color: #854d0e;
+}
+.plc-badge-full {
+	background: #fee2e2;
+	color: #991b1b;
+}
+
+/* ---------- Buttons ---------- */
+.plc-btn {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+	font-size: 0.92rem;
+	font-weight: 600;
+	cursor: pointer;
+	border: 1px solid transparent;
+	text-decoration: none;
+	line-height: 1.2;
+}
+.plc-btn-primary {
+	background: var(--plc-accent);
+	color: #fff;
+}
+.plc-btn-primary:hover {
+	background: var(--plc-accent-dark);
+}
+.plc-btn-primary:disabled {
+	opacity: 0.6;
+	cursor: progress;
+}
+.plc-btn-outline {
+	background: #fff;
+	color: var(--plc-accent);
+	border-color: var(--plc-accent);
+}
+.plc-btn-outline:hover {
+	background: var(--plc-accent);
+	color: #fff;
+}
+
+/* ---------- Single event detail ---------- */
+.plc-event-detail {
+	margin: 1rem 0 1.5rem;
+}
+.plc-detail-list {
+	list-style: none;
+	margin: 0;
+	padding: 1rem 1.25rem;
+	background: #f9fafb;
+	border: 1px solid var(--plc-border);
+	border-radius: var(--plc-radius);
+}
+.plc-detail-list li {
+	margin: 0.25rem 0;
+}
+
+/* ---------- Registration block ---------- */
+.plc-register {
+	margin: 2rem 0;
+	padding: 1.5rem;
+	border: 1px solid var(--plc-border);
+	border-radius: var(--plc-radius);
+	background: #fff;
+}
+.plc-register h3 {
+	margin-top: 0;
+}
+.plc-spots {
+	font-weight: 600;
+	color: #166534;
+}
+.plc-notice {
+	padding: 0.75rem 1rem;
+	border-radius: 8px;
+	margin: 0.5rem 0;
+}
+.plc-notice-full,
+.plc-notice-closed {
+	background: #fee2e2;
+	color: #991b1b;
+}
+.plc-notice-wait {
+	background: #fef9c3;
+	color: #854d0e;
+}
+
+.plc-form-row {
+	margin-bottom: 1rem;
+}
+.plc-form-row label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 0.3rem;
+	font-size: 0.92rem;
+}
+.plc-form-row input,
+.plc-form-row textarea {
+	width: 100%;
+	padding: 0.6rem 0.7rem;
+	border: 1px solid #d1d5db;
+	border-radius: 8px;
+	font-size: 1rem;
+	box-sizing: border-box;
+}
+.plc-form-row input:focus,
+.plc-form-row textarea:focus {
+	outline: none;
+	border-color: var(--plc-accent);
+	box-shadow: 0 0 0 3px rgba( 29, 78, 216, 0.15 );
+}
+.plc-form-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+}
+.plc-help {
+	display: block;
+	color: var(--plc-muted);
+	font-size: 0.8rem;
+	margin-top: 0.25rem;
+}
+.plc-req {
+	color: #dc2626;
+}
+.plc-form-actions {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+.plc-form-message {
+	font-size: 0.9rem;
+}
+.plc-form-message-error {
+	color: #991b1b;
+}
+
+/* Honeypot — visually hidden but reachable by bots. */
+.plc-hp {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+/* Success state replacing the form. */
+.plc-success {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75rem;
+	padding: 1.25rem;
+	background: #dcfce7;
+	border: 1px solid #86efac;
+	border-radius: var(--plc-radius);
+	color: #166534;
+}
+.plc-success-wait {
+	background: #fef9c3;
+	border-color: #fde047;
+	color: #854d0e;
+}
+.plc-success-icon {
+	font-size: 1.4rem;
+	line-height: 1;
+}
+.plc-success p {
+	margin: 0;
+}
+
+/* ---------- Month grid view ---------- */
+.plc-grid-wrap {
+	margin: 1.5rem 0;
+}
+.plc-grid-nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: 0.75rem;
+}
+.plc-grid-title {
+	margin: 0;
+	font-size: 1.2rem;
+	text-align: center;
+	flex: 1 1 auto;
+}
+.plc-grid {
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+.plc-grid th {
+	background: #f3f4f6;
+	border: 1px solid var(--plc-border);
+	padding: 0.5rem;
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+	color: #6b7280;
+}
+.plc-grid td {
+	border: 1px solid var(--plc-border);
+	vertical-align: top;
+	height: 6.5rem;
+	padding: 0.3rem;
+	width: 14.28%;
+}
+.plc-grid-empty {
+	background: #fafafa;
+}
+/* Overflow days from the previous / next month — shadowed and de-emphasized. */
+.plc-grid-out {
+	background: #fafafa;
+}
+.plc-grid-out .plc-grid-num {
+	color: #cbd5e1;
+	font-weight: 400;
+}
+/* Coming events previewed in the grayed next-month cells read slightly softer. */
+.plc-grid-out .plc-grid-event {
+	opacity: 0.85;
+}
+.plc-grid-today {
+	background: #eff6ff;
+}
+.plc-grid-num {
+	display: block;
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: #374151;
+	margin-bottom: 0.25rem;
+}
+.plc-grid-today .plc-grid-num {
+	color: var(--plc-accent);
+}
+.plc-grid-events {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 2px;
+}
+.plc-grid-event {
+	display: block;
+	font-size: 0.74rem;
+	line-height: 1.2;
+	padding: 2px 4px;
+	border-radius: 4px;
+	background: var(--plc-accent-soft);
+	color: var(--plc-accent-dark);
+	text-decoration: none;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.plc-grid-event:hover {
+	background: var(--plc-accent);
+	color: #fff;
+}
+.plc-grid-event-time {
+	font-weight: 700;
+}
+.plc-grid-event-full {
+	background: #fee2e2;
+	color: #991b1b;
+}
+.plc-grid-event-wait {
+	background: #fef9c3;
+	color: #854d0e;
+}
+.plc-addcal {
+	margin-top: 0.75rem;
+}
+
+@media ( max-width: 600px ) {
+	.plc-grid td {
+		height: auto;
+		min-height: 3.5rem;
+	}
+	.plc-grid th {
+		padding: 0.35rem 0.1rem;
+		font-size: 0.65rem;
+	}
+	.plc-grid-event-title {
+		display: none;
+	}
+	.plc-grid-event {
+		text-align: center;
+		padding: 3px;
+	}
+	.plc-grid-event::after {
+		content: "●";
+	}
+	.plc-grid-event-time {
+		display: none;
+	}
+}
+
+@media ( max-width: 480px ) {
+	.plc-form-grid {
+		grid-template-columns: 1fr;
+	}
+	.plc-date-chip {
+		width: 48px;
+		height: 48px;
+	}
+}

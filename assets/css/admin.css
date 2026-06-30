@@ -1,0 +1,116 @@
+/* Public Library Calendar — admin styles */
+
+.plc-metabox .plc-field {
+	margin: 0.75rem 0;
+}
+.plc-metabox input[type="date"],
+.plc-metabox input[type="number"] {
+	padding: 4px 6px;
+}
+.plc-metabox .plc-time-select {
+	margin-left: 6px;
+	vertical-align: top;
+}
+.plc-metabox hr {
+	margin: 1rem 0;
+	border: 0;
+	border-top: 1px solid #dcdcde;
+}
+.plc-metabox .description {
+	color: #646970;
+	font-style: italic;
+	margin-left: 0.4rem;
+}
+
+/* Registrants page */
+.plc-event-picker {
+	margin: 1rem 0 1.5rem;
+	padding: 1rem;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 6px;
+}
+.plc-event-picker select {
+	min-width: 320px;
+	max-width: 100%;
+}
+
+.plc-summary-cards {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	margin: 1rem 0 1.5rem;
+}
+.plc-card {
+	flex: 1 1 140px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	padding: 1rem;
+	text-align: center;
+}
+.plc-card-num {
+	display: block;
+	font-size: 1.9rem;
+	font-weight: 700;
+	color: #1d2327;
+}
+.plc-card-label {
+	display: block;
+	color: #646970;
+	font-size: 0.85rem;
+	margin-top: 0.25rem;
+}
+
+.plc-pill {
+	display: inline-block;
+	padding: 2px 10px;
+	border-radius: 999px;
+	font-size: 0.78rem;
+	font-weight: 600;
+}
+.plc-pill-confirmed {
+	background: #dcfce7;
+	color: #166534;
+}
+.plc-pill-waitlist {
+	background: #fef9c3;
+	color: #854d0e;
+}
+.plc-pill-cancelled {
+	background: #f3f4f6;
+	color: #6b7280;
+}
+.plc-status-cancelled td {
+	opacity: 0.6;
+}
+.plc-cancel-link {
+	color: #b32d2e;
+	text-decoration: none;
+}
+.plc-cancel-link:hover {
+	text-decoration: underline;
+}
+.plc-muted {
+	color: #8c8f94;
+}
+
+.plc-add-form {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	align-items: center;
+	margin: 0.5rem 0 2rem;
+	padding: 1rem;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 6px;
+}
+.plc-add-form input[type="text"],
+.plc-add-form input[type="email"] {
+	min-width: 180px;
+}
+
+.plc-wl {
+	color: #854d0e;
+}
