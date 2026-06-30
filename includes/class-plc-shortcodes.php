@@ -229,6 +229,8 @@ class PLC_Shortcodes {
 			}
 		}
 
+		$qr_url = PLC_Settings::get( 'show_qr' ) ? self::qr_image_url( get_permalink( $event_id ) ) : '';
+
 		$html = PLC_Templates::get(
 			'event-details.php',
 			array(
@@ -236,6 +238,7 @@ class PLC_Shortcodes {
 				'when'     => $when,
 				'location' => $location,
 				'ics_url'  => $start_ts ? PLC_Ics::url( $event_id ) : '',
+				'qr_url'   => $qr_url,
 			)
 		);
 
@@ -246,6 +249,30 @@ class PLC_Shortcodes {
 		 * @param int    $event_id Event ID.
 		 */
 		return apply_filters( 'plc_event_details_html', $html, $event_id );
+	}
+
+	/**
+	 * Build the QR-code image URL for a target link.
+	 *
+	 * Uses a free QR image service by default; loaded lazily via <img> so a slow
+	 * response never blocks the page. Override with the plc_qr_image_url filter to
+	 * self-host or use a different generator.
+	 *
+	 * @param string $target Link the QR code should encode (e.g. the event permalink).
+	 * @param int    $size   Pixel size of the square image.
+	 * @return string
+	 */
+	public static function qr_image_url( $target, $size = 200 ) {
+		$url = 'https://api.qrserver.com/v1/create-qr-code/?size=' . (int) $size . 'x' . (int) $size . '&margin=0&data=' . rawurlencode( $target );
+
+		/**
+		 * Filter the QR-code image URL.
+		 *
+		 * @param string $url    Image URL.
+		 * @param string $target Encoded link.
+		 * @param int    $size   Image size in pixels.
+		 */
+		return apply_filters( 'plc_qr_image_url', $url, $target, $size );
 	}
 
 	/**

@@ -185,6 +185,45 @@
 	margin: 0.25rem 0;
 }
 
+/* ---------- Event QR code ---------- */
+/* When a QR is present, sit the details and the QR side by side so the QR
+   adds horizontal width instead of extra vertical scroll. */
+.plc-event-detail.plc-has-qr {
+	display: flex;
+	gap: 1.25rem;
+	align-items: flex-start;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.plc-event-detail.plc-has-qr .plc-detail-main {
+	flex: 1 1 260px;
+}
+.plc-qr {
+	flex: 0 0 auto;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 6px;
+	margin: 0;
+	padding: 10px;
+	border: 1px solid var(--plc-border);
+	border-radius: var(--plc-radius);
+	background: #fff;
+}
+.plc-qr img {
+	display: block;
+	width: 120px;
+	height: 120px;
+}
+.plc-qr-label {
+	font-size: 0.72rem;
+	line-height: 1.3;
+	color: var(--plc-muted);
+	text-align: center;
+	max-width: 120px;
+	margin: 0;
+}
+
 /* ---------- Registration block ---------- */
 .plc-register {
 	margin: 2rem 0;
