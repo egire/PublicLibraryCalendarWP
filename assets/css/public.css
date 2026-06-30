@@ -185,6 +185,22 @@
 	margin: 0.25rem 0;
 }
 
+/* ---------- Event share / actions row ---------- */
+.plc-event-share {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 0.85rem 0 0;
+}
+.plc-event-share .plc-btn {
+	font-size: 0.85rem;
+	padding: 0.4rem 0.8rem;
+}
+.plc-copy-link {
+	cursor: pointer;
+	font-family: inherit;
+}
+
 /* ---------- Event QR code ---------- */
 /* When a QR is present, sit the details and the QR side by side so the QR
    adds horizontal width instead of extra vertical scroll. */

@@ -7,7 +7,7 @@ Tags: events, calendar, registration, library, rsvp, waitlist
 Requires at least: 5.8
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.4.0
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,11 @@ If the event has a waitlist enabled, additional sign-ups join the waitlist and a
 In a dedicated database table (`{prefix}_plc_registrations`). Deleting the plugin removes this table and all events.
 
 == Changelog ==
+
+= 1.5.0 =
+* New: "Download flyer" produces a printable / save-as-PDF event flyer with the QR code, for sharing and bulletin boards.
+* New: share actions on the event page next to "Add to calendar" — download flyer, email, and copy link.
+* Improve: the event QR code now sits beside the date/location instead of below it, reducing scrolling.
 
 = 1.4.0 =
 * New: optional QR code on each event page (Settings → Appearance) that patrons can scan to open the event. Loads lazily and is filterable via plc_qr_image_url for self-hosting.

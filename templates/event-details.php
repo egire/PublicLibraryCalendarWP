@@ -6,11 +6,14 @@
  *
  * Available variables:
  *
- * @var int    $event_id Event ID.
- * @var string $when     Formatted date/time range (unescaped).
- * @var string $location Location (unescaped).
- * @var string $ics_url  "Add to calendar" URL, or empty to hide the button.
- * @var string $qr_url   QR-code image URL, or empty to hide the QR block.
+ * @var int    $event_id  Event ID.
+ * @var string $when      Formatted date/time range (unescaped).
+ * @var string $location  Location (unescaped).
+ * @var string $ics_url   "Add to calendar" URL, or empty to hide the button.
+ * @var string $qr_url    QR-code image URL, or empty to hide the QR block.
+ * @var string $permalink Event URL (for copy-link sharing).
+ * @var string $flyer_url Printable flyer URL.
+ * @var string $email_url mailto: share URL.
  *
  * @package PublicLibraryCalendar
  */
@@ -29,13 +32,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<li><strong><?php esc_html_e( 'Where', 'plc' ); ?>:</strong> <?php echo esc_html( $location ); ?></li>
 			<?php endif; ?>
 		</ul>
-		<?php if ( $ics_url ) : ?>
-			<p class="plc-addcal">
-				<a class="plc-btn plc-btn-outline" href="<?php echo esc_url( $ics_url ); ?>">
-					<?php esc_html_e( '📅 Add to calendar', 'plc' ); ?>
-				</a>
-			</p>
-		<?php endif; ?>
+		<p class="plc-event-share">
+			<?php if ( $ics_url ) : ?>
+				<a class="plc-btn plc-btn-outline" href="<?php echo esc_url( $ics_url ); ?>"><?php esc_html_e( '📅 Add to calendar', 'plc' ); ?></a>
+			<?php endif; ?>
+			<?php if ( ! empty( $flyer_url ) ) : ?>
+				<a class="plc-btn plc-btn-outline" href="<?php echo esc_url( $flyer_url ); ?>" target="_blank" rel="noopener"><?php esc_html_e( '📄 Download flyer', 'plc' ); ?></a>
+			<?php endif; ?>
+			<?php if ( ! empty( $email_url ) ) : ?>
+				<a class="plc-btn plc-btn-outline" href="<?php echo esc_url( $email_url ); ?>"><?php esc_html_e( '✉️ Email', 'plc' ); ?></a>
+			<?php endif; ?>
+			<?php if ( ! empty( $permalink ) ) : ?>
+				<button type="button" class="plc-btn plc-btn-outline plc-copy-link" data-url="<?php echo esc_attr( $permalink ); ?>" data-copied="<?php esc_attr_e( 'Link copied!', 'plc' ); ?>"><?php esc_html_e( '🔗 Copy link', 'plc' ); ?></button>
+			<?php endif; ?>
+		</p>
 	</div>
 	<?php if ( ! empty( $qr_url ) ) : ?>
 		<figure class="plc-qr">

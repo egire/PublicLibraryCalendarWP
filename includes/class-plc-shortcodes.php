@@ -229,16 +229,22 @@ class PLC_Shortcodes {
 			}
 		}
 
-		$qr_url = PLC_Settings::get( 'show_qr' ) ? self::qr_image_url( get_permalink( $event_id ) ) : '';
+		$qr_url    = PLC_Settings::get( 'show_qr' ) ? self::qr_image_url( get_permalink( $event_id ) ) : '';
+		$permalink = get_permalink( $event_id );
+		$email_url = 'mailto:?subject=' . rawurlencode( get_the_title( $event_id ) )
+			. '&body=' . rawurlencode( get_the_title( $event_id ) . "\n\n" . $permalink );
 
 		$html = PLC_Templates::get(
 			'event-details.php',
 			array(
-				'event_id' => $event_id,
-				'when'     => $when,
-				'location' => $location,
-				'ics_url'  => $start_ts ? PLC_Ics::url( $event_id ) : '',
-				'qr_url'   => $qr_url,
+				'event_id'  => $event_id,
+				'when'      => $when,
+				'location'  => $location,
+				'ics_url'   => $start_ts ? PLC_Ics::url( $event_id ) : '',
+				'qr_url'    => $qr_url,
+				'permalink' => $permalink,
+				'flyer_url' => PLC_Flyer::url( $event_id ),
+				'email_url' => $email_url,
 			)
 		);
 

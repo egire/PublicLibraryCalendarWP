@@ -45,6 +45,7 @@ final class PLC_Plugin {
 		PLC_Dashboard::init();
 		PLC_Settings::init();
 		PLC_Ics::init();
+		PLC_Flyer::init();
 		PLC_Recurrence::init();
 		PLC_Emails::init();
 

@@ -18,7 +18,35 @@
 	ready( function () {
 		var forms = document.querySelectorAll( '.plc-register-form' );
 		Array.prototype.forEach.call( forms, bindForm );
+
+		var copyBtns = document.querySelectorAll( '.plc-copy-link' );
+		Array.prototype.forEach.call( copyBtns, bindCopyLink );
 	} );
+
+	function bindCopyLink( btn ) {
+		btn.addEventListener( 'click', function () {
+			var url    = btn.getAttribute( 'data-url' ) || '';
+			var copied = btn.getAttribute( 'data-copied' ) || 'Copied!';
+			var done   = function () {
+				var original = btn.textContent;
+				btn.textContent = copied;
+				setTimeout( function () { btn.textContent = original; }, 1500 );
+			};
+			if ( navigator.clipboard && navigator.clipboard.writeText ) {
+				navigator.clipboard.writeText( url ).then( done ).catch( done );
+			} else {
+				var ta = document.createElement( 'textarea' );
+				ta.value = url;
+				ta.style.position = 'fixed';
+				ta.style.opacity = '0';
+				document.body.appendChild( ta );
+				ta.select();
+				try { document.execCommand( 'copy' ); } catch ( e ) {}
+				document.body.removeChild( ta );
+				done();
+			}
+		} );
+	}
 
 	function bindForm( form ) {
 		form.addEventListener( 'submit', function ( e ) {
